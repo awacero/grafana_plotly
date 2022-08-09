@@ -2,7 +2,7 @@
 
 ## Javascript code to generate the following image
 
-![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)
+![This is an image](/images/ccn_lat_lon.png)
 
 ```
 //console.log(data)
