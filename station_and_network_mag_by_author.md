@@ -1,7 +1,7 @@
 
 
 
-##Javascript code to generate the following image
+## Javascript code to generate the following image
 
 ![This is an image](/images/station_network_magnitude_author.png)
 
