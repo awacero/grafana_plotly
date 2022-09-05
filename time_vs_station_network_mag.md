@@ -94,8 +94,11 @@ layout:{
 ## INFLUX QUERIES
 ### Query A
 ```
-SELECT "author", "mag", "station_id", "station_magnitude_type", "modification_time" FROM "magnitude_variation" WHERE ("event_id" =~ /^$event_id$/) AND $timeFilter```
+SELECT "author", "mag", "station_id", "station_magnitude_type", "modification_time" FROM "magnitude_variation" WHERE ("event_id" =~ /^$event_id$/) AND $timeFilter
+
+```
 
 ### Query B
 ```
 SELECT "mag", "modification_time", "station_count", "magnitude_type", "author" FROM "network_magnitude_variation" WHERE ("event_id" =~ /^$event_id$/) AND $timeFilter
+``` 
