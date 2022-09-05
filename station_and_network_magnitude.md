@@ -76,3 +76,17 @@ return {data:[tr_s_m,tr_n_m,tr_box],layout:
  }
  };
 ```
+
+## INFLUX QUERIES
+### Query A
+```
+SELECT "magnitude_type", "mag" FROM "network_magnitude_variation" WHERE ("event_id" =~ /^$event_id$/) AND $timeFilter
+```
+
+### Query B
+```
+SELECT "station_magnitude_type", "mag", "station_id", "mag_diff"  *10, "author" FROM "magnitude_variation" WHERE ("event_id" =~ /^$event_id$/) AND $timeFilter
+
+```
+
+
