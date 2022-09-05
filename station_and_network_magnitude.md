@@ -6,18 +6,6 @@
 
 ```
 console.log(data)
-var mag = data.series[1].fields[2].values.buffer;
-var s_m_type = data.series[1].fields[1].values.buffer;
-var station_id = data.series[1].fields[3].values.buffer;
-var mag_diff = data.series[1].fields[4].values.buffer;
-var s_m_author = data.series[1].fields[5].values.buffer;
-var info = []
-station_id.forEach(
-  (st_id,i)=> info[i]= '<br>'+s_m_author[i]
-          + '<br>' + st_id 
-          +'<br>'+ s_m_type[i] +': ' + mag[i])
-
-
 var  shakemap = [
     ['0.0',            'rgb(128,128,255)'],
     ['0.111111111111', 'rgb(191,204,255)'],
@@ -29,20 +17,27 @@ var  shakemap = [
     ['0.777777777778', 'rgb(255,145,0)'],
     ['0.888888888889', 'rgb(255,0,0)'],
     ['1.0', 'rgb(200,0,0)']
-
   ]
+
+var mag = data.series[1].fields[2].values.buffer;
+var s_m_type = data.series[1].fields[1].values.buffer;
+var station_id = data.series[1].fields[3].values.buffer;
+var mag_diff = data.series[1].fields[4].values.buffer;
+var s_m_author = data.series[1].fields[5].values.buffer;
+var info = []
+station_id.forEach(
+  (st_id,i)=> info[i]= '<br>'+s_m_author[i]
+          + '<br>' + st_id 
+          +'<br>'+ s_m_type[i] +': ' + mag[i])
 
 var tr_box = {
   x: s_m_type,
   y: mag,
-  jitter:0.3,
+  jitter:0.5,
   type: 'box',
-  name:'s_m_box',
-  //fillcolor: 'yellow'
+  name:'station_mag_boxplot'
  
 };
-
-
 
 var tr_s_m ={
   x: s_m_type,
@@ -57,7 +52,7 @@ var tr_s_m ={
         colorscale: shakemap,
         size:mag_diff,
         symbol:'circle-open-dot',
-        colorbar:{x:-5}
+        colorbar:{x:-5, title:{text:'M'}}
    }
 }
 var n_mag_type = data.series[0].fields[1].values.buffer
@@ -71,25 +66,13 @@ var tr_n_m ={
   marker:{ symbol: 'square-open',
             color:'black',
            size:15 } ,
-  name:"net_mag"
+  name:"network_mag"
 }
 
-var tr_author ={ 
-    x: s_m_author,
-    y: mag,
-    name:"",
-    text:info,
-    hovertemplate:'%{text}',
-    type:'scatter',
-    mode:'markers',
-    marker:{color:mag,colorscale:shakemap,
-      symbol:'diamond-open',
-      size:8},
-    name:'author'
 
-     }
-
-return {data:[tr_s_m,tr_n_m,tr_box],layout:{hovermode:'closest',
-          legend:{'orientation':'h'}}};
-          
+return {data:[tr_s_m,tr_n_m,tr_box],layout:
+{hovermode:'closest',
+ legend:{'orientation':'h'}
+ }
+ };
 ```
