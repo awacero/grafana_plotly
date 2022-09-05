@@ -6,8 +6,7 @@
 ![This is an image](/images/station_network_magnitude_author.png)
 
 
-```
-console.log(data)
+```console.log(data)
 
 var  shakemap = [
     ['0.0',            'rgb(128,128,255)'],
@@ -77,13 +76,14 @@ var tr_s_m_author ={
       colorscale:shakemap,
       symbol:'circle-open',
       size:mag_diff,
-      colorbar:{x:-5, title:{text:'M'}}
+      colorbar:{x:-5, title:{text:'Mag val'}}
       }     
      }
 
-return {data:[tr_s_m_author,tr_n_m_author],layout:{hovermode:'closest',
-          legend:{ y:-0.1, 'orientation':'h'}}};
-
+return {data:[tr_s_m_author,tr_n_m_author],
+layout:{hovermode:'closest',
+         yaxis:{title:{text:'Magnitude value'}},
+          legend:{ y:-0.2, 'orientation':'h'}}};
 ```
 
 
