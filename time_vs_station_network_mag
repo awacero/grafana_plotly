@@ -1,6 +1,6 @@
 ### Javascript code to generate the following image
 
-![This is an image](/images/sc3_stats_station_network.png)
+![This is an image](/images/time_vs_station_network_mag.png)
 
 
 
@@ -94,9 +94,8 @@ layout:{
 ## INFLUX QUERIES
 ### Query A
 ```
-SELECT "magnitude_type", "mag" FROM "network_magnitude_variation" WHERE ("event_id" =~ /^$event_id$/) AND $timeFilter
-```
+SELECT "author", "mag", "station_id", "station_magnitude_type", "modification_time" FROM "magnitude_variation" WHERE ("event_id" =~ /^$event_id$/) AND $timeFilter```
 
 ### Query B
 ```
-SELECT "station_magnitude_type", "mag", "station_id", "mag_diff"  *10, "author" FROM "magnitude_variation" WHERE ("event_id" =~ /^$event_id$/) AND $timeFilter
+SELECT "mag", "modification_time", "station_count", "magnitude_type", "author" FROM "network_magnitude_variation" WHERE ("event_id" =~ /^$event_id$/) AND $timeFilter
