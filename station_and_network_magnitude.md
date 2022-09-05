@@ -52,7 +52,7 @@ var tr_s_m ={
         colorscale: shakemap,
         size:mag_diff,
         symbol:'circle-open-dot',
-        colorbar:{x:-5, title:{text:'M'}}
+        colorbar:{x:-5, title:{text:'Mag val'}}
    }
 }
 var n_mag_type = data.series[0].fields[1].values.buffer
@@ -71,7 +71,8 @@ var tr_n_m ={
 
 
 return {data:[tr_s_m,tr_n_m,tr_box],layout:
-{hovermode:'closest',
+{ yaxis:{title:{text:'Magnitude value'}},
+  hovermode:'closest',
  legend:{'orientation':'h'}
  }
  };
